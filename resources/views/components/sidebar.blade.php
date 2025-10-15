@@ -42,15 +42,22 @@
 
   <!-- User Profile -->
   <div style="padding-top: 1.5rem;" class="border-t border-white/20 w-[90%] flex items-center justify-between">
+    @php
+      $userAuth = auth()->user();  
+    @endphp
     <div class="flex items-center gap-3">
-      <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="" class="w-10 h-10 rounded-full object-cover">
+      <img  src="{{ $userAuth->image ? asset('storage/profile/' . $userAuth->image) : 'https://randomuser.me/api/portraits/women/2.jpg' }}"  alt="{{ $userAuth->fullname }}"   class="w-10 h-10 rounded-full object-cover">
       <div>
-        <p class="text-sm font-semibold">Yola Septia</p>
-        <p class="text-xs text-gray-400">@ysaptia</p>
+        <p class="text-sm font-semibold">{{$userAuth->fullname}}</p>
+        <p class="text-xs text-gray-400">{{"@".$userAuth->username}}</p>
       </div>
     </div>
-    <button class="bg-sky-500 hover:bg-sky-600 px-5 py-3 rounded-lg text-white">
-      <i class="fa-solid fa-right-from-bracket"></i>
-    </button>
+      <form action="{{ route('logout')}}" method="post">
+          @csrf
+          <button type="buttob" class="bg-sky-500 hover:bg-sky-600 px-5 py-3 rounded-lg text-white">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+      </form>
+    </a>
   </div>
 </aside>
