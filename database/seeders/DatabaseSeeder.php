@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'superadmin',
                 'password' => \Hash::make('123'),
                 'is_active' => true,
-                'lastlogin' => now(),
+                'last_login' => now(),
             ]
 );
         $adminUser = User::firstOrCreate(
@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'admin',
                 'password' => \Hash::make('123'),
                 'is_active' => true,
-                'lastlogin' => now(),
+                'last_login' => now(),
             ]
 );
         $staffUser = User::firstOrCreate(
@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'staff',
                 'password' => \Hash::make('123'),
                 'is_active' => true,
-                'lastlogin' => now(),
+                'last_login' => now(),
             ]
 );
         $superadminUser->assignRole($superAdminRole);
